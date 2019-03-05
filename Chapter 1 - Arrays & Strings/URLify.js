@@ -5,8 +5,23 @@ has sufficient space at the end to hold the additional characters, and that you 
 length of the string. (Note: If implementing in Java, please use a character array so that you can
 perform this operation in place.)
 EXAMPLE
-Input: "Mr John Smith "J 13
-Output: "Mr%20J ohn%20Smith"
+Input: "Mr John Smith"
+Output: "Mr%20John%20Smith"
 
 */
 
+const assert = require('assert');
+
+const URLify = (string) => {
+  let url = '';
+  for (let i = 0; i < string.length; i += 1) {
+    if (string[i] === ' ') {
+      url += '%20';
+    } else {
+      url += string[i];
+    }
+  }
+  return url;
+};
+
+assert.equal(URLify('Mr John Smith'), 'Mr%20John%20Smith');
